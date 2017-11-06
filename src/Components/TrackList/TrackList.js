@@ -10,8 +10,9 @@ class TrackList extends React.Component {
           return <Track 
                   name={this.props.track.name} 
                   artist={this.props.track.artist}
-                  album={this.props.track.album} 
-                  />
+                  album={this.props.track.album}
+                  key={this.props.track.id} 
+                />
         })
       </div>
     )
