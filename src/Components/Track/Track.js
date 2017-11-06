@@ -3,13 +3,16 @@ import './Track.css'
 
 
 class Track extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
   
   renderAction() {
     if(this.props.isRemoval) {
-      return <a> - </a>;
-    } else {
-      return <a> + </a>;
-    }
+      return <a className='Track-action' onClick={this.removeTrack}>-</a>;
+    } 
+      return <a className='Track-action' onClick={this.addTrack}>+</a>;
   }
 
   render() {
@@ -20,10 +23,11 @@ class Track extends React.Component {
             <p><!-- track artist will go here--> | <!-- track album will go here -->
             </p>
         </div>
-          <a className="Track-action">{ renderAction() }</a>
+          {this.renderAction()}
       </div>
     )
   }
 }
 
 export default Track;
+
