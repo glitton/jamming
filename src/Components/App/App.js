@@ -8,15 +8,18 @@ class App extends Component {
     super(props);
     this.state = {
       searchResults: [
-        {
-          name: 'Borderline'},
-        {
-          artist: 'Madonna'},
-        {
-          album: 'The Immaculate Collection'},
+        {name: 'Borderline'},
+        {artist: 'Madonna'},
+        {album: 'The Immaculate Collection'}
       ]
-    }; 
-  }
+    },
+      playListName: 'Workout',
+      playListTracks: [
+        {name: 'Borderline'},
+        {artist: 'Madonna'},
+        {album: 'The Immaculate Collection'}
+      ] 
+  } //end of constructor
 
   render() {
     return (
@@ -25,8 +28,10 @@ class App extends Component {
         <div className="App">
           <SearchBar />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.SearchResults} />
-            <Playlist />
+            <SearchResults searchResults={this.state.searchResults} />
+            <Playlist 
+              playListName={this.state.playListName} 
+              playListTracks={this.state.playListTracks} />
           </div>
         </div>
       </div>
