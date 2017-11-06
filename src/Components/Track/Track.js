@@ -3,8 +3,9 @@ import './Track.css'
 
 
 class Track extends React.Component {
+  
   renderAction() {
-    if(isRemoval) {
+    if(this.props.isRemoval) {
       return <a> - </a>;
     } else {
       return <a> + </a>;
