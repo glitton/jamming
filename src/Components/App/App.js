@@ -21,6 +21,13 @@ class App extends Component {
       ] 
   } //end of constructor
 
+  addTrack(track) {
+    if(this.props.track.id === this.state.playListTracks) {
+      
+    }
+
+  }
+
   render() {
     return (
       <div>
