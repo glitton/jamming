@@ -7,6 +7,10 @@ class Track extends React.Component {
     super(props);
 
   }
+
+  addTrack() {
+    
+  }
   
   renderAction() {
     if(this.props.isRemoval) {
