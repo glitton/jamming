@@ -11,22 +11,28 @@ class App extends Component {
         {name: 'Borderline'},
         {artist: 'Madonna'},
         {album: 'The Immaculate Collection'}
-      ]
-    },
+      ],
+    
       playListName: 'Workout',
       playListTracks: [
         {name: 'Borderline'},
         {artist: 'Madonna'},
         {album: 'The Immaculate Collection'}
-      ] 
+      ]
+    };  
+      
+      this.addTrack = this.addTrack.bind(this);
+
   } //end of constructor
 
   addTrack(track) {
-    if(this.props.track.id === this.state.playListTracks) {
-      
+    let tracks = this.state.playListTracks
+    if(!track.includes(track)) {
+      tracks.push(track);
+      this.setState({playListTracks: tracks})
     }
 
-  }
+  } // end of addTrack
 
   render() {
     return (
@@ -43,7 +49,7 @@ class App extends Component {
         </div>
       </div>
     );
-  }
-}
+  } //end of render
+} //end of Component
 
 export default App;
