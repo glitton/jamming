@@ -31,12 +31,13 @@ class App extends Component {
     let tracks = this.state.playListTracks
     if(!track.includes(track)) {
       tracks.push(track);
-      this.setState({playListTracks: tracks})
+      this.setState({playListTracks: tracks}) 
     }
 
   } // end of addTrack
 
   removeTrack(track) {
+    //need to figure this out
 
   }// end of removeTrack
 
