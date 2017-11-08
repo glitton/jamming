@@ -23,6 +23,7 @@ class App extends Component {
     };  
       
       this.addTrack = this.addTrack.bind(this);
+      this.removeTrack = this.removeTrack.bind(this);
 
   } //end of constructor
 
@@ -34,6 +35,10 @@ class App extends Component {
     }
 
   } // end of addTrack
+
+  removeTrack(track) {
+
+  }// end of removeTrack
 
   render() {
     return (
@@ -47,7 +52,8 @@ class App extends Component {
               onAdd={this.addTrack}/>
             <Playlist 
               playListName={this.state.playListName} 
-              playListTracks={this.state.playListTracks} />
+              playListTracks={this.state.playListTracks} 
+              onRemove={this.removeTrack}/>
           </div>
         </div>
       </div>
