@@ -27,6 +27,7 @@ class App extends Component {
 
   } //end of constructor
 
+  //step 41, doesn't make sense
   addTrack(track) {
     let tracks = this.state.playListTracks
     if(!track.includes(track)) {
@@ -38,6 +39,7 @@ class App extends Component {
 
   removeTrack(track) {
     //need to figure this out
+    // step 49
 
   }// end of removeTrack
 
