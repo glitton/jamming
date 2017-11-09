@@ -10,8 +10,7 @@ class Playlist extends React.Component {
   }
 
   handleNameChange(evt) {
-    evt.preventDefault();
-    //step 59, don't know how to do this
+    this.props.onNameChange(evt.target.value);
 
   }
 
@@ -22,7 +21,7 @@ class Playlist extends React.Component {
         <TrackList 
             tracks={this.props.playListTracks}
             onRemove={this.props.onRemove} 
-            onChange={this.props.handleNameChange}
+            onChange={this.handleNameChange}
         />
             
         <a className="Playlist-save" onClick={this.props.onSave}>

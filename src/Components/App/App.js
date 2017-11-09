@@ -48,19 +48,19 @@ class App extends Component {
     let tracks = this.state.playListTracks
     // check if track is in the list
     if(tracks.includes(track)) {
+      //filter checks currTrack against tracks
       tracks = tracks.filter(currTrack => {
-      // return true if currTrack doesn't have the same id as `track`
+      // return true if currTrack.id doesn't have the same id as `track`
         if(currTrack.id !== track.id) {
           return true;
         } else {
           return false;
         }
-    }); 
+      }); 
     }  
       this.setState({
         tracks: tracks
       }) 
-
   }// end of removeTrack
 
   //step 57, ask for a code review
