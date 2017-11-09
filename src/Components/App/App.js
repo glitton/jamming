@@ -24,6 +24,7 @@ class App extends Component {
       
       this.addTrack = this.addTrack.bind(this);
       this.removeTrack = this.removeTrack.bind(this);
+      this.updatePlaylistName = this.updatePlaylistName.bind(this);
 
   } //end of constructor
 
@@ -32,16 +33,24 @@ class App extends Component {
     let tracks = this.state.playListTracks
     if(!track.includes(track)) {
       tracks.push(track);
-      this.setState({playListTracks: tracks}) 
+      this.setState({
+        playListTracks: tracks
+      }) 
     }
-
   } // end of addTrack
 
-  removeTrack(track) {
-    //need to figure this out
-    // step 49
+  // removeTrack(track) {
+  //   //need to figure this out
+  //   // step 49
 
-  }// end of removeTrack
+  // }// end of removeTrack
+
+  //step 57, ask for a code review
+  updatePlaylistName(name) {
+    this.setState({
+      name: name
+    })
+  }
 
   render() {
     return (
@@ -56,7 +65,9 @@ class App extends Component {
             <Playlist 
               playListName={this.state.playListName} 
               playListTracks={this.state.playListTracks} 
-              onRemove={this.removeTrack}/>
+              onRemove={this.removeTrack}
+              onNameChange={this.updatePlaylistName}
+            />
           </div>
         </div>
       </div>
