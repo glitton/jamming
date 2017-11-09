@@ -29,7 +29,7 @@ class App extends Component {
       this.search = this.search.bind(this); 
   } //end of constructor
 
-  //step 41, doesn't make sense
+  //step 41
   addTrack(track) {
     let tracks = this.state.playListTracks
     if(!track.includes(track)) {
@@ -40,11 +40,15 @@ class App extends Component {
     }
   } // end of addTrack
 
-  // removeTrack(track) {
-  //   //need to figure this out
-  //   // step 49
+  removeTrack(track) {
+    let tracks = this.state.playListTracks
+    if(track.includes(track)) {
+      delete track; //not sure about this
+      this.setState({
+        playListTracks: tracks
+      }) 
 
-  // }// end of removeTrack
+  }// end of removeTrack
 
   //step 57, ask for a code review
   updatePlaylistName(name) {

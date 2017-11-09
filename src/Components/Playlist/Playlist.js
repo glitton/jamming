@@ -6,14 +6,14 @@ class Playlist extends React.Component {
   constructor(props){
     super(props);
 
-    // this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
   }
 
-  // handleNameChange(evt) {
-  //   evt.preventDefault();
-  //   //step 59, don't know how to do this
+  handleNameChange(evt) {
+    evt.preventDefault();
+    //step 59, don't know how to do this
 
-  // }
+  }
 
   render() {
     return (
