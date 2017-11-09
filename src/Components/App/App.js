@@ -31,8 +31,11 @@ class App extends Component {
 
   //step 41
   addTrack(track) {
+    // get current list of tracks
     let tracks = this.state.playListTracks
+    // check if track exists
     if(!track.includes(track)) {
+      //if not, add it to the tracks object
       tracks.push(track);
       this.setState({
         playListTracks: tracks
@@ -41,11 +44,21 @@ class App extends Component {
   } // end of addTrack
 
   removeTrack(track) {
+    // get list of curret tracks
     let tracks = this.state.playListTracks
-    if(track.includes(track)) {
-      delete track; //not sure about this
+    // check if track is in the list
+    if(tracks.includes(track)) {
+      tracks = tracks.filter(currTrack => {
+      // return true if currTrack doesn't have the same id as `track`
+        if(currTrack.id !== track.id) {
+          return true;
+        } else {
+          return false;
+        }
+    }); 
+    }  
       this.setState({
-        playListTracks: tracks
+        tracks: tracks
       }) 
 
   }// end of removeTrack
