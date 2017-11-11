@@ -15,7 +15,7 @@ export class SearchBar extends React.Component {
 
   handleTermChange(evt) {
     this.setState({
-      term: evt.target.value;
+      term: evt.target.value,
     })
 
   }
