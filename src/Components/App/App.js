@@ -72,10 +72,9 @@ class App extends Component {
 
   savePlaylist() {
     let trackURIs = [];
-    for(let = i, i < playListTracks.length; i ++){
+    for(let i= 0; i < playListTracks.length; i ++){
       trackURIs.push(playListTracks[i].uri); 
-    }
-    
+    }  
   }
 
   search(term) {
