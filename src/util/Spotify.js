@@ -11,15 +11,15 @@ let Spotify = {
       return accessToken;
     } 
 
-    const tokenFound = window.location.href.match('/access_token=([^&]*)/');
-    const expireTime = window.location.href.match('/expires_in=([^&]*)/');
+    const tokenFound = window.location.href.match(/access_token=([^&]*)/);
+    const expireTime = window.location.href.match(/expires_in=([^&]*)/);
 
     if(tokenFound && expireTime) {
       accessToken = tokenFound[1];
       
       const tokenExpires = Number(expireTime[1]); 
 
-      window.setTimeout(() => accessToken = '', expiresIn * 1000);
+      window.setTimeout(() => accessToken = '', tokenExpires * 1000);
       window.history.pushState('Access Token', null, '/');
 
       return accessToken;
@@ -29,7 +29,12 @@ let Spotify = {
       `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
     }
 
+  }, // end of getAccessToken method
+
+  search(userSearchTerm) {
+    return new Promise()
   }
+
 }
 
 export default Spotify;
