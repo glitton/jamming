@@ -38,10 +38,20 @@ let Spotify = {
           Authorization: `Bearer ${accessToken}`
         }  
       }).then(response => {
-      
-    })
-  }
-
+          return response.json();  
+        })
+        .then(jsonResponse => {
+          if(jsonResponse.tracks) {
+            return jsonResponse.tracks.map(track => ({
+              ID: track.id,
+              Name: track.name,
+              Artist: track.artists[0].name,
+              Album: track.album.name,
+              URI: track.uri 
+            }));
+          }
+        })
+  } //end or search method
 }
 
 export default Spotify;
