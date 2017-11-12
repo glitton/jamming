@@ -80,7 +80,7 @@ let Spotify = {
             {
               headers: headers,
               method: 'POST',
-              body: JSON.stringify({ name: name })
+              body: JSON.stringify({ name: playlistName })
             }
           )
         })
@@ -93,12 +93,11 @@ let Spotify = {
             {
               headers: headers,
               method: 'POST',
-              body: JSON.stringify({ name: name })
+              body: JSON.stringify({ uris: arrayTrackURIs })
             }
           )
         })
     }
-
   }// end of savePlaylist method
 } // end of Spotify module
 

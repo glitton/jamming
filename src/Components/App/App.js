@@ -64,18 +64,23 @@ class App extends Component {
       }) 
   }// end of removeTrack
 
-  //step 57, ask for a code review
   updatePlaylistName(name) {
     this.setState({
       name: name
     })
   }
 
-  savePlaylist() {
-    let trackURIs = [];
-    for(let i= 0; i < this.playListTracks.length; i ++){
-      trackURIs.push(this.playListTracks[i].uri); 
-    }  
+  savePlaylist(playlistName, arrayTrackURIs) {
+    Spotify.savePlaylist(playlistName, arrayTrackURIs).then(playListTrack => {
+      this.setState({
+        playlistName: 'New Playlist',
+        searchResults: []
+      })
+    })
+    // let trackURIs = [];
+    // for(let i= 0; i < this.playListTracks.length; i ++){
+    //   trackURIs.push(this.playListTracks[i].uri); 
+    // }  
   }
 
   search(term) {
