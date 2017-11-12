@@ -78,9 +78,9 @@ let Spotify = {
           return fetch(
             `https://api.spotify.com/v1/users/${userId}/playlists`,
             {
-              headers: 'headers',
+              headers: headers,
               method: 'POST',
-              body: 'body'
+              body: JSON.stringify({ name: name })
             }
           )
         })
@@ -91,9 +91,9 @@ let Spotify = {
           playlistID = jsonResponse.id;
           return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, 
             {
-              headers: 'headers',
+              headers: headers,
               method: 'POST',
-              body: 'body'
+              body: JSON.stringify({ name: name })
             }
           )
         })
