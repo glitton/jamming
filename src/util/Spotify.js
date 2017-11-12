@@ -58,19 +58,20 @@ let Spotify = {
     let headers = {
       Authorization: 'Bearer ' + this.accessToken
     }
-    let userId;
+    let userId = jsonResponse.id;
 
     if(!playlistName || !arrayTrackURIs) {
       return;
     } else {
       return fetch(
         'https://api.spotify.com/v1/me',
-        {headers: headers}.then(response => {
+        {headers: headers}
+        .then(response => {
           return response.json();
         })
         .then(jsonResponse => {
           return fetch(
-            'https://api.spotify.com/v1/users/${userId}/playlists',
+            `https://api.spotify.com/v1/users/${userId}/playlists`,
             {
               headers: headers,
               method: 'POST',
@@ -78,7 +79,10 @@ let Spotify = {
             }
           )
         })
-      );
+        .then(jsonResponse => {
+          return response.json();
+        })
+      ); // end of first fetch
 
     }
 
