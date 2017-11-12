@@ -51,8 +51,30 @@ let Spotify = {
             }));
           }
         })
-  } //end or search method
-}
+  }, //end or search method
+
+  savePlaylist(playlistName, arrayTrackURIs) {
+    let accessToken2;
+    let headers = {
+      Authorization: 'Bearer ' + this.accessToken
+    }
+    let userId;
+
+    if(!playlistName || !arrayTrackURIs) {
+      return;
+    } else {
+      return fetch(
+        'https://api.spotify.com/v1/me',
+        {headers: headers}.then(response => {
+          return response.json();
+        }) 
+
+      );
+
+    }
+
+  }// end of savePlaylist method
+} // end of Spotify module
 
 export default Spotify;
 
