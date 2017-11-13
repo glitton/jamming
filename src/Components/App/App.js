@@ -10,11 +10,11 @@ class App extends Component {
     super(props);
     this.state = {
       searchResults: [
-        {
-          name: Borderline, 
-          artist: Madonna, 
-          album: Immaculate Conception
-        }
+        // {
+        //   name: 'Borderline', 
+        //   artist: 'Madonna', 
+        //   album: 'Immaculate Conception'
+        // }
       ],
       playlistName: '',
       playlistTracks: [] 

@@ -33,6 +33,7 @@ let Spotify = {
   }, // end of getAccessToken method
 
   search(userSearchTerm) {
+    const accessToken = this.getAccessToken();
     return fetch(`https://api.spotify.com/v1/search?type=track&q=${userSearchTerm}`, 
       {
         headers: {
@@ -57,7 +58,6 @@ let Spotify = {
 
   savePlaylist(playlistName, arrayTrackURIs) {
     //step 91
-    let access_token = accessToken; //accessToken is the user's access token
     let headers = {
       Authorization: 'Bearer ' + this.accessToken
     }
