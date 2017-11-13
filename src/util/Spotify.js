@@ -34,25 +34,26 @@ let Spotify = {
   }, // end of getAccessToken method
 
   search(userSearchTerm) {
-    fetch(`https://api.spotify.com/v1/search?type=track&q=${userSearchTerm}`, 
+    return fetch(`https://api.spotify.com/v1/search?type=track&q=${userSearchTerm}`, 
       {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }  
       }).then(response => {
           return response.json();  
-        })
+        }) // end of then response
         .then(jsonResponse => {
-          if(jsonResponse.tracks) {
-            return jsonResponse.tracks.map(track => ({
-              ID: track.id,
-              Name: track.name,
-              Artist: track.artists[0].name,
-              Album: track.album.name,
-              URI: track.uri 
-            }));
+          if(!jsonResponse.tracks) {
+            return [];
           }
-        })
+            return jsonResponse.tracks.items.map(track => ({
+              id: track.id,
+              name: track.name,
+              artist: track.artists[0].name,
+              album: track.album.name,
+              uri: track.uri 
+            }))//end of map
+        }) // end of then jsonResponse.tracks
   }, //end or search method
 
   savePlaylist(playlistName, arrayTrackURIs) {
