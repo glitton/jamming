@@ -25,8 +25,7 @@ let Spotify = {
       return accessToken;
 
     } else {
-      const uriRedirect = 
-      `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
+      return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
     }
 
   }, // end of getAccessToken method
@@ -54,7 +53,7 @@ let Spotify = {
   }, //end or search method
 
   savePlaylist(playlistName, arrayTrackURIs) {
-    let access_token;
+    // let access_token;
     let headers = {
       Authorization: 'Bearer ' + this.accessToken
     }
