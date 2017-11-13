@@ -46,13 +46,17 @@ let Spotify = {
           if(!jsonResponse.tracks) {
             return [];
           }
-            return jsonResponse.tracks.items.map(track => ({
-              id: track.id,
-              name: track.name,
-              artist: track.artists[0].name,
-              album: track.album.name,
-              uri: track.uri 
-            }))//end of map
+            return jsonResponse.tracks.items.map(track => (
+              [
+                {
+                  id: track.id,
+                  name: track.name,
+                  artist: track.artists[0].name,
+                  album: track.album.name,
+                  uri: track.uri 
+                }
+              ])
+            )//end of map
         }) // end of then jsonResponse.tracks
   }, //end or search method
 
