@@ -30,7 +30,6 @@ let Spotify = {
       window.location = accessUri;
 
     }
-
   }, // end of getAccessToken method
 
   search(userSearchTerm) {
@@ -57,7 +56,8 @@ let Spotify = {
   }, //end or search method
 
   savePlaylist(playlistName, arrayTrackURIs) {
-    // let access_token;
+    //step 91
+    let access_token = accessToken; //accessToken is the user's access token
     let headers = {
       Authorization: 'Bearer ' + this.accessToken
     }
