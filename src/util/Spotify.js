@@ -25,7 +25,10 @@ let Spotify = {
       return accessToken;
 
     } else {
-      return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
+      const accessUri = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
+
+      window.location = accessUri;
+
     }
 
   }, // end of getAccessToken method
