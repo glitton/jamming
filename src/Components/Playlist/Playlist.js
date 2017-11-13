@@ -19,7 +19,7 @@ class Playlist extends React.Component {
       <div className="Playlist">
         <input defaultValue={'New Playlist'} />
         <TrackList 
-            tracks={this.props.playListTracks}
+            tracks={this.props.playlistTracks}
             onRemove={this.props.onRemove} 
             onChange={this.handleNameChange}
         />

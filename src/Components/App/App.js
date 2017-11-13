@@ -9,9 +9,15 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [],
-      playListName: '',
-      playListTracks: [] 
+      searchResults: [
+        {
+          name: Borderline, 
+          artist: Madonna, 
+          album: Immaculate Conception
+        }
+      ],
+      playlistName: '',
+      playlistTracks: [] 
     };  
       
       this.addTrack = this.addTrack.bind(this);
@@ -24,20 +30,20 @@ class App extends Component {
   //step 41
   addTrack(track) {
     // get current list of tracks
-    let tracks = this.state.playListTracks
+    let tracks = this.state.playlistTracks
     // check if track exists
     if(!tracks.includes(track)) {
       //if not, add it to the tracks object
       tracks.push(track);
       this.setState({
-        playListTracks: tracks
+        playlistTracks: tracks
       }) 
     }
   } // end of addTrack
 
   removeTrack(track) {
     // get list of curret tracks
-    let tracks = this.state.playListTracks
+    let tracks = this.state.playlistTracks
     // check if track is in the list
     if(tracks.includes(track)) {
       //filter checks currTrack against tracks
@@ -91,8 +97,8 @@ class App extends Component {
               searchResults={this.state.searchResults} 
               onAdd={this.addTrack}/>
             <Playlist 
-              playListName={this.state.playListName} 
-              playListTracks={this.state.playListTracks} 
+              playlistName={this.state.playlistName} 
+              playlistTracks={this.state.playlistTracks} 
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist}
