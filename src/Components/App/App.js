@@ -9,18 +9,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [
-        {name: 'Borderline'},
-        {artist: 'Madonna'},
-        {album: 'The Immaculate Collection'}
-      ],
-    
+      searchResults: [],
       playListName: 'Workout',
-      playListTracks: [
-        {name: 'Borderline'},
-        {artist: 'Madonna'},
-        {album: 'The Immaculate Collection'}
-      ]
+      playListTracks: [] 
     };  
       
       this.addTrack = this.addTrack.bind(this);
@@ -35,7 +26,7 @@ class App extends Component {
     // get current list of tracks
     let tracks = this.state.playListTracks
     // check if track exists
-    if(!track.includes(track)) {
+    if(!tracks.includes(track)) {
       //if not, add it to the tracks object
       tracks.push(track);
       this.setState({
