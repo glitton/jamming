@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist  from '../Playlist/Playlist';
 import Spotify from '../../util/Spotify';
 
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      searchResults: [
-        // {
-        //   name: 'Borderline', 
-        //   artist: 'Madonna', 
-        //   album: 'Immaculate Conception'
-        // }
-      ],
-      playlistName: '',
+      searchResults: [],
+      playlistName: 'New Playlist',
       playlistTracks: [] 
     };  
       
@@ -30,41 +25,44 @@ class App extends Component {
   //step 41
   addTrack(track) {
     // get current list of tracks
-    let tracks = this.state.playlistTracks
+    let tracks = this.state.playlistTracks;
+    tracks.push(track);
+
+    this.setState({playListTracks: tracks});
     // check if track exists
-    if(!tracks.includes(track)) {
-      //if not, add it to the tracks object
-      tracks.push(track);
-      this.setState({
-        playlistTracks: tracks
-      }) 
-    }
+    // if(!tracks.includes(track)) {
+    //   //if not, add it to the tracks object
+    //   tracks.push(track);
+    //   this.setState({
+    //     playlistTracks: tracks
+    //   }) 
+    // }
   } // end of addTrack
 
   removeTrack(track) {
     // get list of curret tracks
-    let tracks = this.state.playlistTracks
+    let tracks = this.state.playlistTracks;
     // check if track is in the list
-    if(tracks.includes(track)) {
-      //filter checks currTrack against tracks
-      tracks = tracks.filter(currTrack => {
-      // return true if currTrack.id doesn't have the same id as `track`
-        if(currTrack.id !== track.id) {
-          return true;
-        } else {
-          return false;
-        }
-      }); 
-    }  
-      this.setState({
-        tracks: tracks
-      }) 
+    // if(tracks.includes(track)) {
+    //   //filter checks currTrack against tracks
+    //   tracks = tracks.filter(currTrack => {
+    //   // return true if currTrack.id doesn't have the same id as `track`
+    //     if(currTrack.id !== track.id) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }); 
+    // }  
+    tracks = tracks.filter(currTrack => currTrack.id !== track.id);
+    
+    this.setState({ playlistTracks: tracks}); 
   }// end of removeTrack
 
   updatePlaylistName(name) {
     this.setState({
-      name: name
-    })
+      playlistName: name
+    });
   }
 
   savePlaylist() {
@@ -74,9 +72,8 @@ class App extends Component {
         this.setState({
           playlistName: 'New Playlist',
           searchResults: []
-        }
-      );// end of then
-    }); //end of map
+        });// end of then
+      }); //end of map
 
     // let trackURIs = [];
     // for(let i= 0; i < this.playListTracks.length; i ++){
@@ -87,7 +84,7 @@ class App extends Component {
   search(term) {
     Spotify.search(term).then(searchResults => {
       this.setState({searchResults: searchResults});
-    })
+    });
   }
 
   render() {
@@ -101,7 +98,7 @@ class App extends Component {
               searchResults={this.state.searchResults} 
               onAdd={this.addTrack}/>
             <Playlist 
-              playlistName={this.state.playlistName} 
+              // playlistName={this.state.playlistName} 
               playlistTracks={this.state.playlistTracks} 
               onRemove={this.removeTrack}
               onNameChange={this.updatePlaylistName}

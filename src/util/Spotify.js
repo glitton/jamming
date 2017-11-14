@@ -1,11 +1,9 @@
-const clientId = '899b1802c83949b4bd1811a245095ee0';
+const clientId = '3b560aca7190431ba350b448ed6694ed';
 const uriRedirect = 'http://localhost:3000/';
 let accessToken;
 
-
 // Module that interacts with the Spotify API
 const Spotify = {
-
   getAccessToken() {
     if(accessToken) {
       return accessToken;
@@ -25,9 +23,9 @@ const Spotify = {
       return accessToken;
 
     } else {
-      const accessUri = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
+      const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${uriRedirect}`;
 
-      window.location = accessUri;
+      window.location = accessUrl;
 
     }
   }, // end of getAccessToken method
@@ -69,8 +67,11 @@ const Spotify = {
     .then(response => response.json())
 
     .then(jsonResponse => {
+      console.log('This is the json from the first fetch');
+      console.log(jsonResponse);
       userId = jsonResponse.id;
-      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`,
+      console.log(userId);
+      return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/$`,
             {
               headers: headers,
               method: 'POST',
