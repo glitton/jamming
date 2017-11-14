@@ -26,35 +26,32 @@ class App extends React.Component {
   addTrack(track) {
     // get current list of tracks
     let tracks = this.state.playlistTracks;
-    tracks.push(track);
-
-    this.setState({playListTracks: tracks});
-    // check if track exists
-    // if(!tracks.includes(track)) {
-    //   //if not, add it to the tracks object
-    //   tracks.push(track);
-    //   this.setState({
-    //     playlistTracks: tracks
-    //   }) 
-    // }
+    //check if track exists
+    if(!tracks.includes(track)) {
+      //if not, add it to the tracks object
+      tracks.push(track);
+      this.setState({
+        playlistTracks: tracks
+      }) 
+    }
   } // end of addTrack
 
   removeTrack(track) {
     // get list of curret tracks
     let tracks = this.state.playlistTracks;
     // check if track is in the list
-    // if(tracks.includes(track)) {
-    //   //filter checks currTrack against tracks
-    //   tracks = tracks.filter(currTrack => {
-    //   // return true if currTrack.id doesn't have the same id as `track`
-    //     if(currTrack.id !== track.id) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   }); 
-    // }  
-    tracks = tracks.filter(currTrack => currTrack.id !== track.id);
+    if(tracks.includes(track)) {
+      //filter checks currTrack against tracks
+      tracks = tracks.filter(currTrack => {
+      // return true if currTrack.id doesn't have the same id as `track`
+        if(currTrack.id !== track.id) {
+          return true;
+        } else {
+          return false;
+        }
+      }); 
+    }  
+    //tracks = tracks.filter(currTrack => currTrack.id !== track.id);
     
     this.setState({ playlistTracks: tracks}); 
   }// end of removeTrack
