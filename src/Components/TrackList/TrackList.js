@@ -11,14 +11,14 @@ class TrackList extends React.Component {
           return <Track 
             track={track}
             key={track.id} 
-            onAdd={this.props.onAdd}
             onRemove={this.props.onRemove}
+            onAdd={this.props.onAdd}
           /> //end of Track component
           }        
         )
       }  
       </div>
-    )
+    );
   }
 }
 

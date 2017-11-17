@@ -6,9 +6,13 @@ class Track extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isRemoval: true
+    }
+
     this.addTrack = this.addTrack.bind(this);  
     this.removeTrack = this.removeTrack.bind(this);  
-  }
+  } // end of Track class
 
   addTrack(event) {
     this.props.onAdd(this.props.track)
@@ -37,7 +41,7 @@ class Track extends React.Component {
             {this.renderAction()}
           </a>  
       </div>
-    )
+    );
   }
 }
 
